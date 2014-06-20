@@ -32,7 +32,7 @@ def get_users(user_file_path):
 
 def single_password():
     """print a single password and exit."""
-    print(gen_pw)
+    print(gen_pw())
 
 
 def batch():
@@ -47,9 +47,12 @@ def batch():
         pw, hashed = gen_pw()
         append_to_file(plaintext_file_path, user + ";" + pw + "\n")
         append_to_file(hashed_file_path, user + ";" + hashed + "\n")
-        print(user)
+        print(user, pw, hashed)
 
-if arguments[1] == "batch":
-    batch()
+if len(arguments) > 1:
+    if arguments[1] == "batch":
+        batch()
+    else:
+        single_password()
 else:
     single_password()

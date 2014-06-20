@@ -27,6 +27,7 @@ def get_users(user_file_path):
     user_file = open(user_file_path)
     users = user_file.readlines()
     user_file.close()
+    return users
 
 
 def single_password():
@@ -46,6 +47,7 @@ def batch():
         pw, hashed = gen_pw()
         append_to_file(plaintext_file_path, user + ";" + pw + "\n")
         append_to_file(hashed_file_path, user + ";" + hashed + "\n")
+        print(user)
 
 if arguments[1] == "batch":
     batch()

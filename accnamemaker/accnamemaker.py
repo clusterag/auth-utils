@@ -51,4 +51,4 @@ def name_to_shortname(name):
         return shortname
 
 
-print name_to_shortname("Max Mustermann")+date_to_number("1.1.1970")
+print(name_to_shortname("Max Mustermann")+date_to_number("1.1.1970"))

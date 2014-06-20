@@ -1,8 +1,13 @@
+"""generate account names."""
 import datetime
 
 
 def date_to_number(date):
-    """take the 8-10 character long birthdate as a string and convert it to the three magic digits."""
+    """
+    take birthdate as string and convert to the three magic digits.
+
+    birthdate is 8-10 character long.
+    """
     pos_of_dot = date.index('.')
     if date.count('.') != 2:
         return

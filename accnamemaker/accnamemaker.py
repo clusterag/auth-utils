@@ -25,13 +25,14 @@ def date_to_number(date):
 
 def name_to_shortname(name):
     """take the first two letters from the first and from the last name."""
-    name = name.lower()
-    if name.count(' ') == 1:
-        pos_of_space = name.index(' ')
-        part1 = name[0:2]
-        part2 = name[pos_of_space+1:pos_of_space+3]
-        shortname = part1+part2
-        return shortname
+    if name.count(' ') >= 1:
+        name = name.lower()
+        name = name.split(' ')
+        name1 = name[0]
+        name2 = name[len(name)-1]
+        return name1[0:2]+name2[0:2]
+    else:
+        return ''
 
 
 print(name_to_shortname("Max Mustermann")+date_to_number("1.1.1970"))

@@ -3,41 +3,24 @@ import datetime
 
 
 def date_to_number(date):
-    """
-    take birthdate as string and convert to the three magic digits.
-
-    birthdate is 8-10 character long.
-    """
-    pos_of_dot = date.index('.')
-    if date.count('.') != 2:
-        return
+    """take birthdate as string and convert to the three magic digits."""
+    if date.count('.') == 2:
+        date = date.split('.')
     else:
-        if len(date) == 10:  # for 01.01.2014
-            days = int(date[0:2])
-            months = int(date[3:5])
-            years = int(date[6:10])
-        elif len(date) == 9:
-            if pos_of_dot == 2:  # for 01.1.2014
-                days = int(date[0:2])
-                months = int(date[3])
-                years = int(date[5:9])
-            elif pos_of_dot == 1:  # for 1.01.2014
-                days = int(date[0])
-                months = int(date[3:4])
-                years = int(date[5:9])
-            else:
-                return
-        elif len(date) == 8:  # for 1.1.2014
-                days = int(date[0])
-                months = int(date[2])
-                years = int(date[4:8])
-        else:
-            return
-    diff = datetime.date(years, months, days)-datetime.date(1899, 12, 30)
-    diff = diff.days
-    diff = str(diff)
-    number = diff[2:5]
-    return number
+        print('Error: String contains more than two dots')
+        return ''
+    days = int(date[0])
+    months = int(date[1])
+    years = int(date[2])
+    try:
+        diff = datetime.date(years, months, days)-datetime.date(1899, 12, 30)
+        diff = diff.days
+        diff = str(diff)
+        number = diff[2:5]
+        return number
+    except ValueError:
+        print('Error: Date is not in range')
+        return ''
 
 
 def name_to_shortname(name):

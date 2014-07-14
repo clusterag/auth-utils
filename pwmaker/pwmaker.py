@@ -1,4 +1,5 @@
 """dasfasdfasdf."""
+"""Copyright 2014 Jonathan Eberle"""
 import random
 import bcrypt
 from string import hexdigits as letters
@@ -35,11 +36,17 @@ def single_password():
     print(gen_pw())
 
 
-def batch():
+def batch(nouser=False):
     """generate to csv."""
-    user_file_path = input("path to file containing user names:")
+    if not nouser:
+        user_file_path = input("path to file containing user names:")
     plaintext_file_path = input("output path of csv file containing passwords in plaintext:")
     hashed_file_path = input("output path of csv file containing hashed passwords:")
+    batch_processing(user_file_path, plaintext_file_path, hashed_file_path)
+
+
+def batch_processing(user_file_path, plaintext_file_path, hashed_file_path):
+    """process the batch."""
     users_and_pws = []
     users = get_users(user_file_path)
     for user in users:

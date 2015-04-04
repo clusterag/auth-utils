@@ -38,6 +38,6 @@ def name_to_shortname(name):
 def username(name, date):
     return(name_to_shortname(name)+date_to_number(date))
 
-name = input("Name")
-date = input("Date")
+name = input("Name?\n")
+date = input("Geburtsdatum?\n")
 print(username(name, date))
